@@ -12,6 +12,8 @@ PATHARCHIVE="/siebel/ses/siebsrvr/enterprises/SBA_82/$SERVER/logarchive"
 echo $PATHLOG
 find $PATHLOG \( -name "SBA*" -o -name "EAI*.log" -o -name "FINS*" \)  -mtime +5 -print -exec | $XARGS $TAR -cvf $PATHTAR/backup_eai_fins_logs-$($DATE +%Y%m%d).tar \;
 $GZIP $PATHTAR/backup_eai_fins_logs-$($DATE +%Y%m%d).tar
+find $PATHLOG -name "*.log"  -mtime +5 -print -exec rm -rf {} \;
+$GZIP $PATHTAR/backup_eai_fins_logs-$($DATE +%Y%m%d).tar
 find $PATHARCHIVE -name "archive*" -mtime +15 -print -exec rm -rf {} \;
 find /siebel/sai/applicationcontainer/logs \( -name "*.txt*" -o -name "*.log*" \) -mtime +5 -print -exec rm {} \;
 find /siebel/ses/applicationcontainer/logs \( -name "*.txt*" -o -name "*.log*" \) -mtime +5 -print -exec rm {} \;
