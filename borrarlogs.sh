@@ -14,4 +14,4 @@ find /siebel/ses/applicationcontainer/logs \( -name "*.txt*" -o -name "*.log*" \
 find /siebel/ses/siebsrvr/log \( -name "*.dmp" -o -name "*.txt*" -o -name "*.log*" \) -mtime +0 -exec rm {} \;
 
 #ELIMINAR ARCHIVOS BACKUP VIEJOS
-find $PATHTAR -name "backup*" -mtime +5 -print -exec rm -rf {} \;
+find $PATHTAR -name "backup*" -mtime +0 -exec rm -rf {} \;
